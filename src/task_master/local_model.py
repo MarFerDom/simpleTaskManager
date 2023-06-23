@@ -1,6 +1,7 @@
 import logging
 from typing import List, Optional, Tuple
-from src import plugin, config, user_manager
+from src import plugin
+from src import config, user_manager
 from src.task_master import single_task, tasks, task_stats
 
 try:

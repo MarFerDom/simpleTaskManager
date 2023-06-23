@@ -1,5 +1,6 @@
 import logging
-from src import file_handler, plugin, config
+from src import plugin
+from src import file_handler, config
 from typing import Iterator, Optional, Type
 
 default_hasher = plugin.get_class(config.PASSWORD_HASHER)
