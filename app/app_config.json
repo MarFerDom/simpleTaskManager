@@ -1,0 +1,124 @@
+{
+    "modules": [
+        "basic_login",
+        "command",
+        "edit_task",
+        "loader",
+        "main_menu",
+        "present",
+        "register_user"
+    ],
+
+    "start_state":"login page",
+
+    "states": [
+        {
+            "name":"login page",
+            "_comment":"Runs login procedure",
+            "name_of_type":"user_op",
+            "next":"main menu"
+        },
+        {
+            "name":"main menu",
+            "_comment":"Runs the main menu",
+            "name_of_type":"selection",
+            "source":"not user",
+            "id":"0",
+            "options":[
+                "add user",
+                "add task",
+                "view all",
+                "view mine",
+                "generate statistics",
+                "display statistics",
+                "exit"
+            ],
+            "prompt":"Main menu\n---------------"
+        },
+        {
+            "name":"add user",
+            "_comment":"Runs user data entry procedure",
+            "name_of_type":"user_op",
+            "operation":"register",
+            "prompt":"New user",
+            "success_msg":"User created",
+            "failure_msg":"User creation failed",
+            "next":"main menu"
+        },
+        {
+            "name":"add task",
+            "_comment":"Runs task data entry procedure",
+            "name_of_type":"insert",
+            "operation":"add task",
+            "prompt":"Enter new task information",
+            "next":"main menu"
+        },
+        {
+            "name":"view all",
+            "_comment":"Shows all tasks and returns to main menu",
+            "name_of_type":"presentation",
+            "next":"main menu"
+        },
+        {
+            "name":"view mine",
+            "_comment":"Show logged user tasks. Can select by text content but might misbehave.",
+            "name_of_type":"selection",
+            "prompt":"Your tasks:\n- Select for details/edit or -1 to return",
+            "next":"edit task"
+        },
+        {
+            "name":"edit task",
+            "_comment":"Select what to edit on chosen task",
+            "name_of_type":"selection",
+            "source":"not user",
+            "options":[
+                "edit owner",
+                "edit date",
+                "mark as done",
+                "return"
+            ],
+            "is_task":true,
+            "prompt":"What do you want to change?\n"
+        },
+        {
+            "name":"edit owner",
+            "name_of_type":"insert",
+            "next":"view mine",
+            "prompt":"New task owner"
+        },
+        {
+            "name":"edit date",
+            "name_of_type":"insert",
+            "operation":"edit date",
+            "next":"view mine",
+            "prompt":"New task due date"
+        },
+        {
+            "name":"mark as done",
+            "name_of_type":"action",
+            "next":"view mine",
+            "option":"completed"
+        },
+        {
+            "name":"return",
+            "name_of_type":"action",
+            "next":"view mine"
+        },
+        {
+            "name":"generate statistics",
+            "name_of_type":"action",
+            "option":"generate",
+            "next":"main menu"
+        },
+        {
+            "name":"display statistics",
+            "name_of_type":"presentation",
+            "operation":"stats",
+            "next":"main menu"
+        },
+        {
+            "name":"exit",
+            "name_of_type":"Null"
+        }
+    ]
+}
