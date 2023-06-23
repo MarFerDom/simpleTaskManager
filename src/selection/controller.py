@@ -53,9 +53,11 @@ class Controller():
             self.options, self.mapping = model.get_all_tasks(user.user_logged)
             # For each option, add numbering for user selection.
             number_of_lines = len(self.options)
+            number_of_digits = len(str(number_of_lines))
             for i in range(number_of_lines):
                 self.options[i] = \
-                    f'{i+1} - '.ljust(len(str(number_of_lines))+3) + self.options[i]
+                    f'{i+1:0{number_of_digits}} - '.ljust(number_of_digits+3) \
+                        + self.options[i]
         else:   
             self.options = options.copy()
         

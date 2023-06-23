@@ -30,6 +30,9 @@ class Controller:
             Implements both generate report and mark as done.
         '''
 
+        # If option is none, do nothing
+        if self.option == 'none':
+            return
         # If generating report, write report to file.
         if self.option == 'generate':
             self.model.write_report(userlist=list(self.user.users))

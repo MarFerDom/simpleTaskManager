@@ -65,6 +65,14 @@ class View():
         header = ['',self.prompt]
         choice = input('\n'.join(header+self.options)+'\n').lower()
 
+        # Special case for '-1'.
+        if choice == '-1':
+            self.controller_service(index)
+            return
+        
+        # Fill in choice for compatibility with lower numbers
+        num_digits = len(str(len(self.options)))
+        choice = choice.zfill(num_digits)
         # Finds option that matches user input earlier and select it.
         index = filter(
             lambda x: x[0] >= 0,
@@ -79,7 +87,7 @@ class View():
         logger.info(f'{self.__class__} closing.')
         
 if __name__  == '__main__':
-    options = ['Option 1', 'Option 2', 'Option 3']
+    options = [f'Option {i}' for i in range(1,11)]
     menu = View(options=options)
     menu.bind_provider(lambda x: print(f'Selected option {options[x]}'))
     menu.mainloop()
