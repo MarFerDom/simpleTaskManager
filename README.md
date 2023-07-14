@@ -1,6 +1,6 @@
 # Simple Task Manager <a id="top"></a>
 
-Simple Task Manger made during HyperionDev's bootcamp.
+Simple Task Manager made during HyperionDev's bootcamp.
 
 The exercise required the refactoring of an incomplete task manager and its conclusion. The application edits, stores and presents tasks and task owners following a set of requirements presented in [Project Requirements](#proj_req) Additionally unittest was used in a Test Driven Development (TDD), and more abstractions and dependency inversion was inserted to make it flexible to changes, as an extension to the original premise.
 
